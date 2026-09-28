@@ -1,8 +1,8 @@
 # Event Processing Project
 
-The workflow starts when readings are submitted via HTTP to the *ingestor*. The ingestor then sends them to the *processor* through Kafka. Once the processor receives the data, it processes it, checks for anomalies, saves it in the database, and, when necessary, forwards it to the *notifier* via Kafka as well. The notifier is then responsible for delivering the notifications and storing them in its database.
+The workflow starts when readings are submitted via HTTP to the `ingestor`. The ingestor then sends them to the `processor` through Kafka. Once the processor receives the data, it processes it, checks for anomalies, saves it in the database, and, when necessary, forwards it to the `notifier` via Kafka as well. The notifier is then responsible for delivering the notifications and storing them in its database.
 
-This project is meant to help me deepen my understanding of **microservices** and how to build robust applications with **Go**. Apart from small college projects and videos explaining system design concepts, this is my first real experience with the language. In addition, while I am already familiar with the concept of dividing systems into separate services, the goal here is to develop those concepts further and explore new technologies to improve my knowledge.
+This project is meant to help me deepen my understanding of `microservices` and how to build robust applications with `Go`. Apart from small college projects and videos explaining system design concepts, this is my first real experience with the language. In addition, while I am already familiar with the concept of dividing systems into separate services, the goal here is to develop those concepts further and explore new technologies to improve my knowledge.
 
 ## Architecture
 
@@ -36,7 +36,7 @@ This project does not rely on a large number of technologies, but the ones it us
 
 | Technologies | Where | Why |
 | :--- | :--- | :--- |
-| **Go** | Ingestor, Processor and Notifier | Go is commonly used in microservices and is a strong fit for this project, offering solid performance and a well-established ecosystem |
-| **MongoDB** | Processor and Notifier | High availability and scalability, with flexibility to work with different data types and structures |
-| **Kafka** | Communication between Ingestor, Processor and Notifier | Kafka is a well-established broker capable of handling large amounts of data, which suits the purpose of this application, especially if it needs to handle significant traffic |
-| **Docker** | Deployment | Docker helps manage the different services in the system, making deployment and infrastructure setup much easier |
+| `Go` | Ingestor, Processor and Notifier | Go is commonly used in microservices and is a strong fit for this project, offering solid performance and a well-established ecosystem |
+| `MongoDB` | Processor and Notifier | High availability and scalability, with flexibility to work with different data types and structures |
+| `Kafka` | Communication between Ingestor, Processor and Notifier | Kafka is a well-established broker capable of handling large amounts of data, which suits the purpose of this application, especially if it needs to handle significant traffic |
+| `Docker` | Deployment | Docker helps manage the different services in the system, making deployment and infrastructure setup much easier |
