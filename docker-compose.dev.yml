@@ -58,13 +58,14 @@ services:
 
   ingestor:
     build: ingestor/.
+    env_file:
+      - ./ingestor/.env
     ports:
       - "${APP_PORT:-8000}:8000"
     restart: unless-stopped
     container_name: ingestor
     depends_on:
-      mongo-processor:
-        condition: service_healthy
+      - kafka
 
   notifier:
     build: notifier/.
@@ -73,6 +74,8 @@ services:
     restart: unless-stopped
     container_name: notifier
     depends_on:
+      kafka:
+        condition: service_healthy
       mongo-notifier:
         condition: service_healthy
 
@@ -82,3 +85,8 @@ services:
       - "${APP_PORT:-8000}:8000"
     restart: unless-stopped
     container_name: processor
+    depends_on:
+      kafka:
+        condition: service_healthy
+      mongo-processor:
+        condition: service_healthy
